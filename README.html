@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="1-me">1. Me</h2>
+<h3 id="family">Family</h3>
+<h4 id="members">Members</h4>
+<ul>
+<li>
+<p>photo</p>
+</li>
+<li>
+<p>age</p>
+</li>
+<li>
+<p>job</p>
+</li>
+<li>
+<p>where we live</p>
+<ul>
+<li>České Budějovice</li>
+<li>Písek</li>
+<li>Příbram</li>
+<li>Praha</li>
+</ul>
+</li>
+</ul>
+<h3 id="sports">Sports</h3>
+<h4 id="previously">Previously</h4>
+<ul>
+<li>Volleyball</li>
+<li>Karate</li>
+<li>Basketball</li>
+<li>Table Tennis</li>
+</ul>
+<h4 id="currently">Currently</h4>
+<ul>
+<li>Swimming</li>
+<li>Running</li>
+<li>Climbing</li>
+</ul>
+<h3 id="hobbies">Hobbies</h3>
+<ul>
+<li>dancing standard</li>
+<li>dancing cuban salsa</li>
+<li>dancing in club</li>
+<li>playing piano</li>
+</ul>
+<h3 id="jobs">Jobs</h3>
+<ul>
+<li>factory</li>
+<li>starnet</li>
+<li>river</li>
+<li>driver (food, post)</li>
+<li>computer serviceman</li>
+<li>tutoring math</li>
+<li>teacher</li>
+<li>AI developer</li>
+</ul>
+<h3 id="education">Education</h3>
+<ul>
+<li>pre-school</li>
+<li>primary school</li>
+<li>8 year high school</li>
+<li>university</li>
+</ul>
+<h3 id="traveling">Traveling</h3>
+<ul>
+<li>new york</li>
+<li>ukraine</li>
+<li>europe</li>
+<li>turkey</li>
+<li>tunisia, egypt</li>
+<li>armenia</li>
+<li>india</li>
+</ul>
+<hr>
+<h2 id="2-czechia">2. Czechia</h2>
+<h3 id="nature">Nature</h3>
+<ul>
+<li>forests</li>
+<li>lakes</li>
+<li>rivers</li>
+<li>mountains</li>
+<li>fields</li>
+</ul>
+<h4 id="national-parks">National Parks</h4>
+<ul>
+<li>Šumava</li>
+<li>Krkonoše</li>
+<li>Podyjí</li>
+<li>České Švýcarsko</li>
+</ul>
+<h4 id="animals">Animals</h4>
+<ul>
+<li>deer</li>
+<li>wolves</li>
+</ul>
+<h3 id="cities-and-castles">Cities and Castles</h3>
+<ul>
+<li>
+<p>Prague</p>
+</li>
+<li>
+<p>České Budějovice</p>
+</li>
+<li>
+<p>Brno</p>
+</li>
+<li>
+<p>Ostrava</p>
+</li>
+<li>
+<p>Karlštejn</p>
+</li>
+<li>
+<p>Český Krumlov</p>
+</li>
+<li>
+<p>Hluboká nad Vltavou</p>
+</li>
+<li>
+<p>Rožmberk</p>
+</li>
+<li>
+<p>Lednice</p>
+</li>
+<li>
+<p>Valtice</p>
+</li>
+<li>
+<p>Holašovice</p>
+</li>
+</ul>
+<h3 id="czech-language">Czech Language</h3>
+<ul>
+<li>alphabet</li>
+<li>basic phrases</li>
+<li>slavic languages</li>
+</ul>
+<h3 id="people">People</h3>
+<ul>
+<li>
+<p>Čechy</p>
+</li>
+<li>
+<p>Morava</p>
+</li>
+<li>
+<p>Slezsko</p>
+</li>
+<li>
+<p>Romové</p>
+</li>
+<li>
+<p>Slováci</p>
+</li>
+<li>
+<p>Ukrajinci</p>
+</li>
+<li>
+<p>Vietnamci</p>
+</li>
+</ul>
+<h3 id="industries">Industries</h3>
+<ul>
+<li>automotive
+<ul>
+<li>Škoda Auto</li>
+<li>Tatra</li>
+</ul>
+</li>
+<li>beer
+<ul>
+<li>Pilsner Urquell</li>
+<li>Budweiser Budvar</li>
+</ul>
+</li>
+<li>glass</li>
+</ul>
+<hr>
+<h2 id="3-history">3. History</h2>
+<ul>
+<li>compare to Taiwan and China</li>
+</ul>
+<h3 id="prehistoric-findings">Prehistoric Findings</h3>
+<h3 id="medieval">Medieval</h3>
+<h3 id="habsburg-era">Habsburg Era</h3>
+<h3 id="first-republic">First Republic</h3>
+<h3 id="world-war-ii">World War II</h3>
+<h3 id="communist-era">Communist Era</h3>
+<h3 id="velvet-revolution">Velvet Revolution</h3>
+<hr>
+<h2 id="4-food">4. Food</h2>
+<h3 id="typical-ingredients">Typical Ingredients</h3>
+<ul>
+<li>grain</li>
+<li>root vegetables</li>
+<li>potatoes</li>
+<li>meat
+<ul>
+<li>pork</li>
+<li>beef</li>
+<li>chicken</li>
+<li>králík</li>
+<li>carp fish</li>
+<li>wild game
+<ul>
+<li>bažant</li>
+<li>srnčí</li>
+<li>divočák</li>
+<li>zajíc</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>milk products</li>
+<li>eggs</li>
+<li>fruit</li>
+</ul>
+<h3 id="national-dishes">National Dishes</h3>
+<ul>
+<li>můžete zkusit v taipei</li>
+</ul>
+<h3 id="my-favorite-food">My favorite food</h3>
+<hr>
+<h2 id="5-music-and-film">5. Music and Film</h2>
+<h3 id="instruments">Instruments</h3>
+<h3 id="folk-music">Folk Music</h3>
+<ul>
+<li>dechovka</li>
+<li>kroje</li>
+</ul>
+<h3 id="classical-music">Classical Music</h3>
+<h3 id="communist-era-music">Communist Era Music</h3>
+<h3 id="modern-music">Modern Music</h3>
+<h3 id="music-festivals">Music Festivals</h3>
+<ul>
+<li>Colours of Ostrava</li>
+<li>Rock for People</li>
+<li>Hrady</li>
+</ul>
+<h3 id="filmography-only-if-there-is-time">Filmography (only if there is time)</h3>
+<h4 id="classics-from-communist-era-and-90s">Classics from Communist Era and 90s</h4>
+<h4 id="modern">Modern</h4>
+<h4 id="international-that-were-filmed-in-czechia">International that were filmed in Czechia</h4>
+<h4 id="film-festival">Film Festival</h4>
+<ul>
+<li>Karlovy Vary International Film Festival</li>
+</ul>
+<hr>
+<h2 id="6-festivals-and-national-days">6. Festivals and National Days</h2>
+<h3 id="family-1">Family</h3>
+<ul>
+<li>Easter</li>
+<li>Christmas</li>
+<li>Silvestr</li>
+</ul>
+<h3 id="villages">Villages</h3>
+<ul>
+<li>Masopust</li>
+<li>Čarodějnice</li>
+<li>Vinobraní</li>
+</ul>
+<h3 id="cities">Cities</h3>
+<ul>
+<li>
+<p>Poutě</p>
+</li>
+<li>
+<p>Majáles</p>
+</li>
+<li>
+<p>Sjíždění řeky</p>
+</li>
+</ul>
+<h3 id="national-days">National Days</h3>
+<h4 id="political--statehood-days">Political &amp; Statehood Days</h4>
+<ul>
+<li>January 1: Restoration Day of the Independent Czech State (Commemorates the peaceful split of Czechoslovakia in 1993)</li>
+<li>May 8: Victory Day (Marks the end of World War II in Europe in 1945)</li>
+<li>September 28: Czech Statehood Day (St. Wenceslas Day, honoring the patron saint of the nation)</li>
+<li>October 28: Independent Czechoslovak State Day (Celebrating the original foundation of Czechoslovakia in 1918)</li>
+<li>November 17: Struggle for Freedom and Democracy Day (Commemorating the student protests of 1939 and the Velvet Revolution of 1989)</li>
+</ul>
+<h4 id="cultural--religious-days">Cultural &amp; Religious Days</h4>
+<ul>
+<li>Variable Friday: Good Friday</li>
+<li>Variable Monday: Easter Monday</li>
+<li>May 1: Labour Day / May Day (International workers' day and the traditional festival of love)</li>
+<li>July 5: Saints Cyril and Methodius Day (Honoring the missionaries who brought the Slavic alphabet in 863 AD)</li>
+<li>July 6: Jan Hus Day (Commemorating the martyrdom of the religious reformer in 1415)</li>
+<li>December 24: Christmas Eve</li>
+<li>December 25: Christmas Day</li>
+<li>December 26: St. Stephen's Day (Second Day of Christmas)</li>
+</ul>
+<hr>
+<h2 id="7-schools-in-czechia">7. Schools in Czechia</h2>
+<h3 id="hierarchy">Hierarchy</h3>
+<h3 id="grading">Grading</h3>
+<h3 id="time-schedule-and-subjects">Time schedule and Subjects</h3>
+<h3 id="holidays">Holidays</h3>
+<hr>
+<h2 id="8-9-taiwan">8.-9. Taiwan</h2>
+<hr>
+<h2 id="extra-activities">Extra Activities</h2>
+<ul>
+<li>call with my family</li>
+<li>quiz competition</li>
+</ul>
+<h2 id="info-about-school">Info about school:</h2>
+<ul>
+<li>how many kids</li>
+<li>how old</li>
+<li>technical equipment</li>
+<li>technical equipment at home</li>
+</ul>
+
+</body>
+</html>
